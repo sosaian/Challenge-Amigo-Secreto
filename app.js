@@ -19,17 +19,27 @@
 const AMIGO_INPUT = document.getElementById("amigo")
 
 function agregarAmigo() {
-    if (AMIGO_INPUT.value.trim() === "") return
+    if (AMIGO_INPUT.value.trim() === "") {
+        alert("Por favor, ingresa un nombre válido.")
+        return
+    }
 
     const LI = document.createElement("li")
     LI.innerText = AMIGO_INPUT.value
     LISTA_AMIGOS.appendChild(LI)
+
+    AMIGO_INPUT.value = "" // Limpiar el campo luego de agregar.
 }
 
 const LISTA_AMIGOS = document.getElementById("listaAmigos")
 const AMIGO_DRAW = document.getElementById("resultado")
 
 function sortearAmigo() {
+    if (LISTA_AMIGOS.children.length === 0) {
+        alert("La lista está vacía. Agrega nombres antes de sortear.")
+        return
+    }
+
     let index_resultado = Math.floor(Math.random() * LISTA_AMIGOS.children.length)
     AMIGO_DRAW.innerText = LISTA_AMIGOS.children[index_resultado].innerText
 }
