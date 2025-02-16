@@ -1,2 +1,1 @@
-# Challenge-Amigo-Secreto
-Alura + Oracle | Programa ONE | Challenge Amigo Secreto
+Alura Latam + Oracle Next Education | Principiante en Programación G8 - ONE | Challenge Amigo Secreto
