@@ -19,13 +19,23 @@
 const AMIGO_INPUT = document.getElementById("amigo")
 
 function agregarAmigo() {
-    if (AMIGO_INPUT.value.trim() === "") {
+    const AMIGO_NAME = AMIGO_INPUT.value.trim()
+
+    if (AMIGO_NAME === "") {
         alert("Por favor, ingresa un nombre válido.")
         return
     }
 
+    for (let li of LISTA_AMIGOS.children) {
+        if (li.innerText.toLowerCase() === AMIGO_NAME.toLowerCase()) {
+            alert("Este nombre ya está en la lista.")
+            AMIGO_INPUT.value = ""
+            return
+        }
+    }
+
     const LI = document.createElement("li")
-    LI.innerText = AMIGO_INPUT.value
+    LI.innerText = AMIGO_NAME
     LISTA_AMIGOS.appendChild(LI)
 
     AMIGO_INPUT.value = "" // Limpiar el campo luego de agregar.
