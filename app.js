@@ -16,40 +16,39 @@
     Sorteo aleatorio: Al hacer clic en el botón "Sortear Amigo", se seleccionará aleatoriamente un nombre de la lista y se mostrará en la página.
 */
 
-const AMIGO_INPUT = document.getElementById("amigo")
+const INPUT_NOMBRE_AMIGO = document.getElementById("amigo")
+const LISTA_NOMBRES_AMIGOS = document.getElementById("listaAmigos")
+const RESULTADO_SORTEO = document.getElementById("resultado")
 
 function agregarAmigo() {
-    const AMIGO_NAME = AMIGO_INPUT.value.trim()
+    const AMIGO_NAME = INPUT_NOMBRE_AMIGO.value.trim()
 
     if (AMIGO_NAME === "") {
         alert("Por favor, ingresa un nombre válido.")
         return
     }
 
-    for (let li of LISTA_AMIGOS.children) {
+    for (let li of LISTA_NOMBRES_AMIGOS.children) {
         if (li.innerText.toLowerCase() === AMIGO_NAME.toLowerCase()) {
             alert("Este nombre ya está en la lista.")
-            AMIGO_INPUT.value = ""
+            INPUT_NOMBRE_AMIGO.value = ""
             return
         }
     }
 
     const LI = document.createElement("li")
     LI.innerText = AMIGO_NAME
-    LISTA_AMIGOS.appendChild(LI)
+    LISTA_NOMBRES_AMIGOS.appendChild(LI)
 
-    AMIGO_INPUT.value = "" // Limpiar el campo luego de agregar.
+    INPUT_NOMBRE_AMIGO.value = "" // Limpiar el campo luego de agregar.
 }
 
-const LISTA_AMIGOS = document.getElementById("listaAmigos")
-const AMIGO_DRAW = document.getElementById("resultado")
-
 function sortearAmigo() {
-    if (LISTA_AMIGOS.children.length === 0) {
+    if (LISTA_NOMBRES_AMIGOS.children.length === 0) {
         alert("La lista está vacía. Agrega nombres antes de sortear.")
         return
     }
 
-    let index_resultado = Math.floor(Math.random() * LISTA_AMIGOS.children.length)
-    AMIGO_DRAW.innerText = LISTA_AMIGOS.children[index_resultado].innerText
+    let index_resultado = Math.floor(Math.random() * LISTA_NOMBRES_AMIGOS.children.length)
+    RESULTADO_SORTEO.innerText = LISTA_NOMBRES_AMIGOS.children[index_resultado].innerText
 }
