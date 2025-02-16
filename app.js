@@ -15,3 +15,21 @@
 
     Sorteo aleatorio: Al hacer clic en el botón "Sortear Amigo", se seleccionará aleatoriamente un nombre de la lista y se mostrará en la página.
 */
+
+const AMIGO_INPUT = document.getElementById("amigo")
+
+function agregarAmigo() {
+    if (AMIGO_INPUT.value.trim() === "") return
+
+    const LI = document.createElement("li")
+    LI.innerText = AMIGO_INPUT.value
+    LISTA_AMIGOS.appendChild(LI)
+}
+
+const LISTA_AMIGOS = document.getElementById("listaAmigos")
+const AMIGO_DRAW = document.getElementById("resultado")
+
+function sortearAmigo() {
+    let index_resultado = Math.floor(Math.random() * LISTA_AMIGOS.children.length)
+    AMIGO_DRAW.innerText = LISTA_AMIGOS.children[index_resultado].innerText
+}
